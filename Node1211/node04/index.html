@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>node服务</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <form action="/formApi" method="post" enctype="multipart/form-data" >
+        用户名: <input type="text" name="username"> <br>
+        密码: <input type="text" name="password"> <br>
+        上传图片: <input type="file" name="fileId"> <br>
+        <input type="submit" value="提交">
+    </form>
+    <img src="upload/1.png" alt="">
+    <div id="time"></div>
+</body>
+<script type="application/javascript">
+    var time = document.getElementById("time");
+    var timer =  setInterval(function(){
+        var ajax = new XMLHttpRequest();
+        ajax.open("get","/ajaxApi", true);
+        ajax.send();
+        ajax.onload = function(){
+            time.innerHTML = ajax.responseText;
+        }
+    },1000)
+</script>
+</html>
+

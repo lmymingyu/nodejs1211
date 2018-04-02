@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			html,body{
+				height: 100%;
+			}
+			#wrap{
+				max-width:640px;
+				height: 100%;
+				background-image: url(img/1B.png);
+				background-size:100% 100% ;
+				background-size: ;
+				background-color: #0B1E37;
+				position: relative;
+			}
+			#input_f{
+				width: 80%;
+				height: 100%;
+				margin: 0 auto;
+				position: relative;
+			}
+			#input {
+				width: 100%;
+				position: absolute;
+				top: 28%;	
+			}
+			#input input{
+				width: 100%;
+				height: 35px;
+				border: 1px solid white;	
+				border-radius: 3px;
+				text-align: center;
+				font-size: 15px;
+				color: gray;
+				margin-bottom: 5px;
+			}
+			#button{
+				width: 70%;
+				margin: 0 auto;
+			}
+			#button button{
+				width: 70%;
+				height: 35px;
+				background-color: white;
+				border: 1px solid white;
+				border-radius: 3px;
+				position: absolute;
+				top: 50%;
+				font-size: 15px;
+				color: rgb(229,77,65);
+			}
+			#explain{
+				width: 100%;
+				text-align: center;
+				position: absolute;
+				top: 60%;
+			}
+			#explain a {
+				color: white;
+				font-size: 15px;
+			}
+			
+			.explainView{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.view_bg {
+				width: 100%;
+				height: 100%;
+				background-color: black;
+				opacity: 0.4;
+			}
+			.view_bg_w{
+				background-color: white;
+				border-radius: 3px;
+				width: 84%;
+				height: 50%;
+				position: absolute;
+				left: 8%;
+				top: 25%;
+			}
+			.close_btn{
+				width: 18%;
+				position: absolute;
+				right: 0%;
+				top: 20.5%;
+			}
+			.close_btn img{
+				width: 100%;
+			}
+			.view_title{
+				text-align: center;
+				line-height: 50px;
+				color: rgb(231,96,64);
+				font-weight: bold;
+			}
+			.line{
+				width: 90%;
+				border: 1px solid rgb(227,232,240);
+				margin-left: 5%;
+			}
+			.view_content{
+				color: rgb(163,168,184);
+				line-height: 50px;
+				font-size: 15px;
+			}
+			.view_content p {
+				margin-left: 5%;
+			}
+			
+			#prize-winner-show{
+				position: absolute;
+				top: 77%;
+				height: 20%;
+				width: 90%;
+				left: 5%;
+				overflow: hidden;
+			}
+			#prize-winner-header{
+				width: 100%;
+				position: absolute;
+				top: 73%;
+			}
+			#prize-winner-header div{
+				color: rgb(76,82,99);
+				font-size: 14px;
+			}
+			#prize-winner-header div:nth-child(1){
+				display: block;
+				position: absolute;
+				left: 13%;
+			}
+			#prize-winner-header div:nth-child(2){
+				display: block;
+				position: absolute;
+				left: 43%;
+			}
+			#prize-winner-header div:nth-child(3){
+				display: block;
+				position: absolute;
+				left: 75%;
+			}
+			#prize-winner{
+				color: rgb(161,168,198);
+				font-size: 12px;
+				font-weight: 100;
+			}
+			#prize-winner p{
+				margin-top: 10px;
+			}
+			#prize-winner p span:nth-child(1){
+				margin-left: 9%;
+			}
+			#prize-winner p span:nth-child(2){
+				margin-left: 20%;
+			}
+			#prize-winner p span:nth-child(3){
+				margin-left: 15%;
+			}
+			::-moz-placeholder {
+				/* Mozilla Firefox 4 to 18 */
+				color: rgb(161,168,189);
+				opacity: 1;
+			}
+			::-moz-placeholder {
+				/* Mozilla Firefox 19+ */
+				color: rgb(161,168,189);
+				opacity: 1;
+			}
+			input:-ms-input-placeholder {
+				color: rgb(161,168,189);
+				opacity: 1;
+			}
+			input::-webkit-input-placeholder {
+				color: rgb(161,168,189);
+				opacity: 1;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="input_f">
+				<div id="input">
+					<input type="text" name="" id="input_code" placeholder="请输入抽奖兑换码"/>
+					<input type="text"  id="input_name" placeholder="请输入姓名"/>
+					<input type="text"  id="input_phone" placeholder="请输入手机号"/>
+				</div>
+				<div id="button">
+					<button onclick="btnActive()">点击验证</button>
+				</div>
+				<div id="explain">
+					<a href="#" onclick="showExplainView()">活动说明</a>
+				</div>
+			</div>
+			
+			<div id="prize-winner-header">
+					<div>名字</div>
+					<div>手机号</div>
+					<div>奖品</div>
+				</div>
+			<div id="prize-winner-show">
+				<div id="prize-winner">
+				</div>
+			</div>
+			
+			<div class="explainView" style="display: none;">
+				<div class="view_bg"></div>
+				<div class="view_bg_w">
+					<div class="view_title">
+						活动说明
+					</div>
+					<div class="line"></div>
+					<div class="view_content">
+						<p>1.获奖码在报名后由咨询老师发放.</p>
+						<p>2.获奖码在报名后由咨询老师发放.</p>
+						<p>3.获奖码在报名后由咨询老师发放.</p>
+						<p>4.蓝鸥有抽奖活动最终解释权.</p>
+					</div>
+				</div>
+				<div class="close_btn" onclick="closeExplainView()">
+					<img src="img/close_BTN.png"/>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(document.body).ready(function(){
+   			 $('body').height($('body')[0].clientHeight);
+  		});
+
+  		function btnActive(){
+			document.cookie="name="+"张三";
+			$.ajax({
+				type:"post",
+				url:"/login",
+				async:true,
+				data:{
+
+				},
+				success:function (res) {
+					console.log(res);
+					document.location = res;
+				}
+			});
+		}
+  		
+  		
+  		function showExplainView () {
+  			$(".explainView").css("display","block");
+  		}
+  		function closeExplainView(){
+  			$(".explainView").css("display","none");
+  		}
+	</script>
+	
+</html>

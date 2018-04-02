@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button onclick="">点击</button>
+</body>
+<script type="application/javascript">
+//    document.cookie = "name=zhangsan;"
+    //设置cookie   time 天
+    function  setCookie(name,value,time){
+        var date = new Date();
+        date.setTime(date.getTime() +
+                (time * 24 * 60 * 60 * 1000));
+        //时间参数
+        var expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires;
+    }
+
+    setCookie("username","zhangsan",0.5);
+
+    //读取
+    function getCookie(name){
+        var fname = name + "=";
+//        console.log(document.cookie);
+        var arr = document.cookie.split(';');//分割cookie字符串
+        for(var i = 0;i < arr.length; i++) {
+            var param = arr[i];
+            param = param.trim();
+            if(param.indexOf(fname) != -1){
+                return param.substring(fname.length, param.length);
+            }
+        }
+        return "";
+    }
+    console.log(getCookie("username"));
+    //清除cookie
+    function  clearCookie(name){
+        setCookie(name,"",-1);
+    }
+    clearCookie("username");
+    console.log(getCookie("username"));
+</script>
+</html>
